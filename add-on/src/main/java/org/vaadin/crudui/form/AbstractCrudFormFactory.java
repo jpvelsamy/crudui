@@ -19,6 +19,16 @@ public abstract class AbstractCrudFormFactory<T> implements CrudFormFactory<T> {
     protected SerializableConsumer<Exception> errorListener;
 
     @Override
+    public void setRemovedProperties(String... properties) {
+    	Arrays.stream(CrudOperation.values()).forEach(operation -> setRemovedProperties(operation, properties));
+    	
+    }
+    
+    public void setRemovedProperties(CrudOperation operation, String... properties) {
+        getConfiguration(operation).setRemovedProperties(Arrays.asList(properties));
+    }
+    
+    @Override
     public void setVisibleProperties(CrudOperation operation, String... properties) {
         getConfiguration(operation).setVisibleProperties(Arrays.asList(properties));
     }

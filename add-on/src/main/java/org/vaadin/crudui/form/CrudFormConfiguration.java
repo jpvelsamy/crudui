@@ -22,6 +22,8 @@ public class CrudFormConfiguration implements Serializable {
     protected Map<Object, FieldCreationListener> fieldCreationListeners = new HashMap<>();
     protected Map<Object, FieldProvider<?, ?>> fieldProviders = new HashMap<>();
     protected Map<Object, Converter<?, ?>> converters = new HashMap<>();
+    protected List<String> removedProperties = new ArrayList<>();
+    
     protected boolean useBeanValidation;
 
     public List<String> getVisibleProperties() {
@@ -87,4 +89,14 @@ public class CrudFormConfiguration implements Serializable {
     public void setUseBeanValidation(boolean useBeanValidation) {
         this.useBeanValidation = useBeanValidation;
     }
+
+	public List<String> getRemovedProperties() {
+		return removedProperties;
+	}
+
+	public void setRemovedProperties(List<String> removedProperties) {
+		this.removedProperties = removedProperties;
+	}
+    
+    
 }
